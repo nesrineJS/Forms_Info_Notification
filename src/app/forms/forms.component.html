@@ -1,0 +1,290 @@
+<div data-spy="scroll" data-target=".mainmenu-area" id="InscriptionConfirmé">
+
+        <header class="home-area overlay angle" id="home_page">
+            <div class="container">
+                <div class="row">
+                      <div class="col-xs-12 hidden-sm col-md-5">
+                        <figure class="mobile-image wow fadeInUp" data-wow-delay="0.2s">
+                            <img src="assets/images/header-mobile.png" alt="">
+    
+                        </figure>
+                    </div>
+                    <div class="col-xs-12 col-md-7" style="text-align:center">
+                        <div class="space-60 hidden-xs"></div>
+                        <div class="desc wow fadeInUp" data-wow-delay="0.6s">
+                            <img src="assets/images/Logo.png" class="logo">
+                        </div>
+                        <div class="space-50 hidden-xs"></div>
+                        <div class="desc wow fadeInUp" data-wow-delay="0.6s">
+                            <h3>Ne vous laissez plus surprendre!<br> Inscrivez-vous à Info Grève!</h3>
+                        </div>
+                        <!-- <div class="space-40 hidden-xs"></div> -->
+                        <!-- <a   routerLink="/inscription" class="bttn-insp wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-download">Inscription</i></a> -->
+                        <a href="#Inscription"  style="margin-top: 5%" class="bttn-insp wow fadeInUp" data-wow-delay="0.8s">
+                            <i class="lnr lnr-download">Inscription</i></a>
+
+                    </div>
+    
+                </div>
+            </div>
+        </header>
+       
+        <section class="section-padding" id="about_page">
+            <div class="container">
+                <div class="row" id="Inscription">
+
+
+                    <div class="col-xs-12 col-md-10 col-md-offset-1">
+                        <div class="signup-form">
+                                         
+                        <form name="form"  (ngSubmit)="f.form.valid &&  this.isUseConditionChecked && this.isSecteurChecked && this.isCivilityChecked && GetInscriptionInsert(state,cdt1) "
+                         #f="ngForm" novalidate >
+                                <h2>Informations Personnelles</h2>
+
+                                          
+                            <div class="space-40 hidden-xs"></div>                                                                           
+                                <label class="form-title"> 
+                                    <img src="assets/images/Icones/icone-nom.png"> 
+                                    <span> Civilité <span  [ngClass]="{ 'span-invalid': f.submitted &&  !isCivilityChecked   }"  >*</span>  </span>
+                                </label>
+                                                      
+                                <div class="form-group" style="padding-left:50px" >
+
+                                        <div class="form-group" style="padding-left:50px">
+                                                <div class="element">
+                                                    <input type="radio" id="bouton_1"  name="state" (change)="StateRadioButtonChange('monsieur')" value="monsieur">
+                                                    <label for="bouton_1">Monsieur</label>
+                                                </div>
+                                                <div class="element">
+                                                    <input type="radio" id="bouton_2"  name="state"  (change)="StateRadioButtonChange('madame')" value="madame">
+                                                    <label for="bouton_2">Madame</label>
+                                                </div>
+                                                <div class="element">
+                                                    <input type="radio" id="bouton_3"  name="state"  (change)="StateRadioButtonChange('mademoiselle')" value="mademoiselle">
+                                                    <label for="bouton_3">Mademoiselle</label>
+                                                </div>
+                                            </div>
+                                </div>                    
+                                                                 
+                                <div class="form-group">
+                                        <img src="assets/images/Icones/icone-nom.png" class="icon">
+                                        
+                                        <input type="text" name="fullname" id="fullname"  [(ngModel)]="fullname"  #txtFullname="ngModel"
+                                        placeholder="Prénom*" [ngClass]="{ 'input-invalid': f.submitted && txtFullname.invalid  }"
+                                          required  (keypress)="OnlyNumbers($event)"/>  
+                                </div>
+
+                                <div class="form-group"  >
+                                    <img src="assets/images/Icones/icon-ville.png" class="icon">                            
+                                    <input   type="text" id="ville"  name="city" [(ngModel)]="city" 
+                                    (keypress)="OnlyNumbers($event)" [matAutocomplete]="auto"  (keyup)="GetCountrySearch($event)"  
+                                    placeholder="Ville*"  #txtCity="ngModel"  [ngClass]="{ 'input-invalid': f.submitted && txtCity.invalid }" required/>
+    
+                                    <mat-autocomplete #auto="matAutocomplete">
+                                        <mat-option *ngFor="let city of countries" [value]="city.libelle">
+                                          {{city.libelle}}
+                                        </mat-option>
+                                    </mat-autocomplete>                           
+                                </div>
+
+                                <label class="form-title"> 
+                                    <img src="assets/images/Icones/code-post.png"> 
+                                    <span> Code Postal* </span>
+                                </label>  
+
+                                <div class="form-group" style="margin-left: 38px;" 
+                                (change)="GetZipCode(value1, value2, value3, value4)"   name="allZipCode" value="allZipCode">
+                                <input  type="tel" class="num" name="value1" [(ngModel)]="value1"  data-maxlength="1" mask="0"  (input)=" inputValidators($event)"  #txtZip1="ngModel"  [ngClass]="{ 'input-invalid': f.submitted && txtZip1.invalid }"  required  >
+                                <input type="tel" class="num" name="value2" [(ngModel)]="value2"  data-maxlength="1"  mask="0"  (input)="inputValidators($event)"   #txtZip2="ngModel"  [ngClass]="{ 'input-invalid': f.submitted && txtZip2.invalid }"  required>
+                                <input type="tel" class="num" name="value3" [(ngModel)]="value3"  data-maxlength="1"  mask="0"  (input)="inputValidators($event)"  #txtZip3="ngModel"  [ngClass]="{ 'input-invalid': f.submitted && txtZip3.invalid }"required>
+                                <input type="tel" class="num" name="value4" [(ngModel)]="value4"  mask="0"   (input)=" inputValidators($event)" #txtZip4="ngModel"  [ngClass]="{ 'input-invalid': f.submitted && txtZip4.invalid }"required >
+                            
+                                </div>
+
+                                <div class="form-group">
+                                    <img src="assets/images/Icones/icon-job.png" class="icon">                             	
+                                    <input type="text" name="job" id="job"    [(ngModel)]="job" 
+                                    (input)="inputValidator($event)" placeholder="Profession*" #txtJob="ngModel"  
+                                    [ngClass]="{ 'input-invalid': f.submitted && txtJob.invalid }" (keypress)="OnlyNumbers($event)" required/>                               
+                                </div>
+
+                                <label class="form-title"> 
+                                    <img src="assets/images/Icones/icon-num.png"> 
+                                    <span> Numéro de mobile * </span>
+                                </label> 
+
+                                <div class="form-group" style="margin-left: 38px;"   (change)="GetMobile(msisdn1, msisdn2, msisdn3)"  
+                                 name="allMobile" value="allMobile" >
+                                <span style="float:left; font-size:22px">+216</span>
+                                <input type="tel" class="num" data-maxlength="2"  mask="00"  [(ngModel)]="msisdn1" name="msisdn1" 
+                                 (input)="inputValidators($event)"  #txtmob1="ngModel"  
+                                 [ngClass]="{ 'input-invalid': f.submitted && txtmob1.invalid }" required >
+                                <input type="tel" class="num" data-maxlength="3" mask="000" style="width:50px"   [(ngModel)]="msisdn2" name="msisdn2"   (input)="inputValidators($event)" #txtmob2="ngModel"  
+                                [ngClass]="{ 'input-invalid': f.submitted && txtmob2.invalid }" required >
+                                <input type="tel" class="num" mask="000" style="width:50px"   [(ngModel)]="msisdn3" name="msisdn3"   (input)="inputValidators($event)" #txtmob3="ngModel"  
+                                [ngClass]="{ 'input-invalid': f.submitted && txtmob3.invalid }" required>
+                                </div>
+                                
+                         
+                            <h2> Secteurs d'alertes
+                                 <span [hidden]="true"  [ngClass]="{ 'label-invalid': f.submitted &&  !this.isSecteurChecked   }"  >*</span> </h2> 
+
+                            <div class="">
+                                    <h5><span  class ="label-invalid"  *ngIf="f.submitted "  [hidden]="isSecteurChecked" >
+                                        Veuillez choisir le(s) secteur(s)
+                                        d'alerte(s)qui vous intéresse.</span> </h5> 
+                            </div>                                                                            
+                                 <div class="form-group">
+                                    <div *ngFor="let secteur of secteurs ; let i = index" >
+                                        <label class="checkbox-civil" > {{secteur.name}}  
+                                            <input type="checkbox" (click)="SecteurChechBoxChange(secteur.value,$event)" 
+                                            (change)="selected = i"   (ngModel)="value"  
+                                            [value]="secteur.value"   #txtSec="ngModel"  
+                                            [ngClass]="{ 'input-invalid': f.submitted && txtSec.invalid }" required >
+                                            <input [(ngModel)]="secteur" [ngModelOptions]="{standalone: true}">                                           
+                                             <span class="checkmark"></span>
+                                        </label> 
+                                    </div>                                                                                                                                                                   
+                                </div>          
+    
+                            <div class="space-50 hidden-xs">
+                            </div>                            
+                                
+                                <div class="form-group"  >
+                                  <label class="checkbox-cdt"><span  [ngClass]="{ 'label-invalid': f.submitted &&  !this.isUseConditionChecked   }"  >J'accepte les conditions d'utilisations et la politique de confidentialité. 
+                                      </span>
+                                      <input type="checkbox"   name="terms"  (change)="UseConditionCheckBoxChange($event)"
+                                        checked="true"  >
+                                        <span class="checkmark"></span>                              
+                                  </label> <br>                          
+
+                                  <label class="checkbox-cdt">J'accepte de recevoir les SMS publicitaires de Info grève et de ses partenaires.
+                                      <input type="checkbox" checked="true" (click)="ConditionChechBoxChange('YES_PUB_SMS',$event)"   >               
+                                         <span class="checkmark"></span>                                  
+                                  </label>
+                                  <label class="checkbox-cdt">J'accepte que mes données personnelles soient traitées selon la politique de confidentialité de la page.
+                                      <input type="checkbox" checked="true"  (click)="ConditionChechBoxChange('YES_USE_DATA',$event)"    >
+                                      <span class="checkmark"></span>                                  
+                                  </label>  
+                                </div>
+
+                                <div class="form-group text-center">
+                                        <div class=""></div>   
+                                        <div  class ="captchaV2 col-sm-3" [formGroup]="aFormGroup">
+                                            <ngx-recaptcha2 #captchaElem   
+                                            [siteKey]="siteKey"
+                                            (reset)="handleReset()"
+                                            (expire)="handleExpire()"
+                                            (load)="handleLoad()"
+                                            (success)="handleSuccess($event)"
+                                            [useGlobalDomain]="useGlobalDomain"
+                                            [size]="size"
+                                            [hl]="lang"
+                                            [theme]="theme"
+                                            [type]="type"
+                                            formControlName="recaptcha"
+                                            [hidden]="isRecaptachHidden">
+                                             </ngx-recaptcha2>
+                                        </div>
+
+                                    <!--(click)="isBtnInscription = !isBtnInscription" --->
+                                        <div class="form-group form-button" [hidden]="!isMessageHidden" *ngIf="!isBtnInscription">                               
+                                            <input  type="submit"  name="signup" id="signup" class="form-submit"  
+                                            value="M`inscrire maintenant "   style=" color: #fff" />                                                                                              
+                                        </div> 
+                                       
+                                                                                                      
+                                        <div class="form-group form-button" [hidden]="!isMessageAlert" >                               
+                                        <label class="alert alert-danger" role="alert" >
+                                                <i  class="mdi mdi-alert-circle" ></i> 
+                                                {{MsgAlert}}. 
+                                            </label>    
+                                        </div> 
+
+                                        <div *ngIf="f.submitted && f.form.invalid " class="alert alert-danger" role="alert"><i
+                                            class="mdi mdi-alert-circle"></i>Veuillez remplir les champs EN ROUGE du formulaire !
+                                        </div>
+ 
+                                        <div class="form-group form-button" [hidden]="isMessageHidden" >                               
+                                                <label class="alert alert-info" role="alert" >
+                                                        <i  class="mdi mdi-alert-circle" ></i> 
+                                                         Pour finaliser votre inscription, veuillez saisir le code envoyé par SMS. 
+                                                </label>    
+                                        </div> 
+                                </div>                       
+                        </form>
+                        
+                        &nbsp;
+                        <!-- <div class="text-center">
+                            <p style="font-size: 120%"> En confirmant votre inscription au service Info grève,  vous serez inscrit au service selon <br>
+                                <a style="text-decoration: underline" routerlink="termes" ng-reflect-router-link="termes" href="termes" target="_blank">les termes  
+                                    d'utilisation </a> et vos données personnelles seront traitées selon 
+                            <a style="text-decoration: underline" routerlink="confidentialite" ng-reflect-router-link="confidentialite" href="confidentialite" target="_blank">
+                                la politique de confidentialité </a> </p>
+                        </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <footer class="footer-area" id="contact_page">
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4">
+                            <div class="footer-box logo" style="line-height: initial">
+                                 <a href="#"><img src="assets/images/Logo.png"></a>
+                                <p> Soyez le 1er à être prévenu des grèves, avec le service Info grève!<br>
+                                   <br></p>
+                            </div>
+                            <div class="footer-box contact"  style="line-height: initial">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>   
+                                <a href="#" style="color:#fff">hello@infogreve.tn</a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-12 col-md-4">
+                            <div class="footer-box nav-menu"  style="line-height: initial">
+                            <h4> Plan </h4>
+                                <ul>
+                                    <li><a href="#Inscription" >Inscription</a></li>
+                                    <li><a routerlink="termes" ng-reflect-router-link="termes" href="termes" target="_blank">Termes d'utilisation</a></li>
+                                    <li><a routerlink="confidentialite" ng-reflect-router-link="confidentialite" href="confidentialite" target="_blank">Politique de confidentialité</a></li>
+                                    <!-- <li><a routerLink="/termes" target="_blank">Termes d'utilisation</a></li> -->
+                                    <!-- <li><a routerLink="/confidentialite" target="_blank">Politique de confidentailité</a></li> -->
+
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-12 col-md-4">
+                            <div class="footer-box about"  style="line-height: initial">
+                                <h4>  A propos </h4>
+                                <p> Info Grève est un service informationnel,
+                                    permettant à ses abonnés de recevoir par
+                                    SMS, l'information sur les grèves prévues
+                                    et confirmées ainsi que les coupures de
+                                    routes, sur toute la Tunisie. Prix: 70
+                                    millimes/ SMS reçu.</p>
+                            </div>
+                            <div class="footer-box scl-md">
+                                <ul>                                                                        
+                                    <li><a href="https://www.facebook.com/LandolsiTelecom/" target="_blank"><img src="assets/images/Social media/fb.png"></a></li>
+                                    <li><a href="https://www.instagram.com/landolsitelecom/" target="_blank"><img src="assets/images/Social media/inst.png"></a></li>
+                                </ul>                                                                   
+                            </div>
+                        </div>    
+                        
+                        
+                      
+                    </div>
+                    <div class="col-xs-12">
+                        <p class="text-center">Service développé par&nbsp; <a href="http://www.l-2t.com/" target="_blank"><img src="assets/images/L2T.png"></a></p>
+                    </div>
+                </div>
+            </div>
+        </footer> 
+
+</div>
+    

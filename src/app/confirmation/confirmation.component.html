@@ -1,0 +1,173 @@
+<div data-spy="scroll" data-target=".mainmenu-area" id="InscriptionConfirmé">
+
+                <header class="home-area conf-head overlay angle" id="home_page">
+                    <div class="container">
+                        <div class="row">
+                              <div class="col-xs-12 hidden-sm col-md-5">
+                                <figure class="mobile-image wow fadeInUp" data-wow-delay="0.2s">
+                                    <img src="assets/images/header-mobile.png" alt="">
+            
+                                </figure>
+                            </div>
+                            <div class="col-xs-12 col-md-7" style="text-align:center">
+                                <div class="space-60 hidden-xs"></div>
+                                <div class="desc wow fadeInUp" data-wow-delay="0.6s">
+                                    <img src="assets/images/Logo.png" class="logo">
+                                </div>
+                                <div class="space-50 hidden-xs"></div>
+                                <div class="desc wow fadeInUp" data-wow-delay="0.6s">
+                                    <h3>Ne vous laissez plus surprendre!<br> Inscrivez-vous à Info Grève!</h3>
+                                </div>
+                                <!-- <div class="space-40 hidden-xs"></div> -->
+                                <!-- <a   routerLink="/inscription" class="bttn-insp wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-download">Inscription</i></a> -->
+                                <!-- <a  (click)="NewInscription()" style="margin-top: 5%;cursor:pointer;" class="bttn-insp wow fadeInUp" data-wow-delay="0.8s" >
+                                    <i class="lnr lnr-download">Nouvelle Inscription</i></a> -->
+        
+                            </div>
+            
+                        </div>
+                    </div>
+                </header>
+
+                <section class="section-padding" id="about_page">
+                                <div class="container">
+                                <div class="row">                  
+                                <div class="col-xs-12 col-md-10 col-md-offset-1 signup-form">
+                                        <form name="form2" id ="formClean" (ngSubmit)="f2.form.valid &&  GetCodeCheck2(id_code,msisdn)  "  #f2="ngForm" novalidate >
+                                        <div class="form-group"   >
+                                                <h2>Confirmation Inscription</h2>
+
+                                                <div class="space-50 hidden-xs">
+                                                 <h5>Veuillez saisir le Code de confirmation reçu par SMS sur votre mobile</h5>
+                                                </div> 
+                                        <div class="form-group"   >
+                                                        <img src="assets/images/Icones/icon-num.png" class="icon"> 
+                                                        <input  class="CodeInput col-md-3"  type="text" name="msisdn" id="msisdn"  [(ngModel)]="msisdn" />  
+                                        </div> 
+                                        <div class="form-group"   >
+                                                        <img src="assets/images/Icones/code-conf.png" class="icon"> 
+                                                        <input class="CodeInput col-md-3" type="text" name="id_code" id="id_code"  [(ngModel)]="id_code"
+                                                         placeholder="Code" />  
+                                        </div> 
+
+                                        <!-- <div class="form-group">
+                                                        <img src="assets/images/Icones/icon-num.png" class="icon">                                                       
+                                                        <input type="text" name="msisdn" id="msisdn"  [(ngModel)]="msisdn" />  
+                                        </div>
+
+                                        <div class="form-group">
+                                                        <img src="assets/images/Icones/icon-num.png" class="icon">
+                                                        
+                                                        <input type="text" name="fullname" id="fullname"  [(ngModel)]="fullname"  #txtFullname="ngModel"
+                                                        placeholder="Prénom*" [ngClass]="{ 'input-invalid': f.submitted && txtFullname.invalid  }"
+                                                        required  (keypress)="OnlyNumbers($event)"/>  
+                                        </div> -->
+                                  
+                                                        
+                                        <div class="form-group"   >
+                                                <h5>Si vous n'avez pas reçu votre code. Cliquez pour 
+                                                    <a  (click)="ResendCode()"  style="text-decoration: underline;cursor:pointer; font-size: 15px;">renvoyer le code</a></h5>                          
+                                                <!-- <input type="text" #ref placeholder="Code de confirmation" class="code" name="id_code" 
+                                                (input)="ChangeCodeText()"  [hidden]= "test" /> 
+                                                <input  matInput name="id_code" [(ngModel)]="id_code"  readonly class="hidden">                                          -->
+                                        </div>
+
+                                         <div class="form-group form-button" [hidden]="isCodeAlertMessageHidden">                               
+                                                <label class="alert alert-danger" role="alert" >
+                                                        <i  class="mdi mdi-alert-circle" ></i> Merci de vérifier votre code ou votre numéro de mobile. </label>    
+                                        </div>   
+                                     
+
+                                        <div  class="form-group form-button" [hidden]="!isCodeMessageHidden"  >                              
+                                                <input  href='#InscriptionConfirmé' type="submit" name="signup" id="signup" class="form-submit"                                             
+                                                value='Je confirme'  style=" color: #fff" 
+                                                />
+                                                <!-- <a (click)="NewInscription()"  type="submit" name="signup" id="signup" class="form-submit"  style=" color: #fff"  >Nouvelle inscription</a> -->
+                                                <!-- <a style="text-decoration: underline;" >Renvoyer code</a> -->
+                                        </div> 
+                                        
+                                        <div class="form-group form-button" [hidden]="isCodeMessageHidden" >                               
+                                            <label class="alert alert-info" role="alert" >
+                                                    <i  class="mdi mdi-alert-circle" ></i>Inscription effectuée avec succès. Vous
+                                                    recevrez un SMS dès qu’une grève est
+                                                    confirmée. Prix: 70 millimes/ SMS reçu.</label>    
+                                         </div>    
+                                    
+                                        <div class="text-center">
+                                                <p style="font-size: 120%"> En confirmant votre inscription au service Info grève,  vous serez inscrit au service selon <br>
+                                                    <a style="text-decoration: underline" routerlink="termes" ng-reflect-router-link="termes" href="termes" target="_blank">les termes  
+                                                        d'utilisation </a> et vos données personnelles seront traitées selon 
+                                                <a style="text-decoration: underline" routerlink="confidentialite" ng-reflect-router-link="confidentialite" href="confidentialite" target="_blank">
+                                                    la politique de confidentialité </a> </p>
+                                            </div> 
+                                        
+
+                                       
+
+
+                                                </div>                 
+                                        </form> 
+                                </div>
+                                </div>
+                                </div>
+                </section>  
+
+
+                <footer class="footer-area" id="contact_page">
+                                <div class="footer-bottom">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-4">
+                                                <div class="footer-box logo">
+                                                     <a href="#"><img src="assets/images/Logo.png"></a>
+                                                    <p> Soyez le 1er à être prévenu des grèves, avec le service Info grève!<br>
+                                                       <br></p>
+                                                </div>
+                                                <div class="footer-box contact">
+                                                    <i class="fa fa-envelope" aria-hidden="true"></i>   
+                                                    <a href="#" style="color:#fff">hello@infogreve.tn</a>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-xs-12 col-md-4">
+                                                <div class="footer-box nav-menu">
+                                                <h4> Plan </h4>
+                                                    <ul>
+                                                        <li><a href="#Inscription" (click)="NewInscription()" >Inscription</a></li>
+                                                        <li><a routerlink="termes" ng-reflect-router-link="termes" href="termes" target="_blank">Termes d'utilisation</a></li>
+                                                        <li><a routerlink="confidentialite" ng-reflect-router-link="confidentialite" href="confidentialite" target="_blank">Politique de confidentialité</a></li>
+                                                        <!-- <li><a routerLink="/termes" target="_blank">Termes d'utilisation</a></li> -->
+                                                        <!-- <li><a routerLink="/confidentialite" target="_blank">Politique de confidentailité</a></li> -->
+                    
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-xs-12 col-md-4">
+                                                <div class="footer-box about">
+                                                    <h4>  A propos </h4>
+                                                    <p> Info Grève est un service informationnel,
+                                                        permettant à ses abonnés de recevoir par
+                                                        SMS, l'information sur les grèves prévues
+                                                        et confirmées ainsi que les coupures de
+                                                        routes, sur toute la Tunisie. Prix: 70
+                                                        millimes/ SMS reçu.</p>
+                                                </div>
+                                                <div class="footer-box scl-md">
+                                                    <ul>                                                                        
+                                                        <li><a href="https://www.facebook.com/LandolsiTelecom/" target="_blank"><img src="assets/images/Social media/fb.png"></a></li>
+                                                        <li><a href="https://www.instagram.com/landolsitelecom/" target="_blank"><img src="assets/images/Social media/inst.png"></a></li>
+                                                    </ul>                                                                   
+                                                </div>
+                                            </div>    
+                                            
+                                            
+                                          
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <p class="text-center">Service développé par&nbsp; <a href="http://www.l-2t.com/" target="_blank"><img src="assets/images/L2T.png"></a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                </footer> 
+</div>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <base href="/">
+
+  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+
+  <meta name="author" content="Info grève "> 
+  <meta name="description" content="Info grève est un service d'alerte par SMS, sur les grèves prévues et confirmées ainsi que les coupures de routes, en Tunisie. Prix: 70 millimes / SMS reçu.">
+  <meta name="keywords" content="Grève en Tunisie, information sur les grèves, alerte sur les grèves, routes coupées, grève de carburant, grève d'essence, grève d'enseignement, grève du secteur public, grève la poste tunisienne, grève transport, grève Taxi, alerte sur les grèves par SMS.">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Info Grève &nbsp; : &nbsp; le premier service d'alerte sur les grèves en Tunisie.</title>  <!-- <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"> -->
+  <link rel="shortcut icon" type="image/ico" href="assets/images/favicon.ico.png" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/linearicons.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="assets/css/normalize.css">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <link rel="stylesheet" href="assets/pretty-checkbox-master/dist/pretty-checkbox.min.css"/>
+
+
+  <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+ <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147155174-1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-147155174-1');
+</script>
+
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <Script>
+      $(document).ready(function(){
+          $(".num").keyup(function () {
+              $this=$(this);
+              if ($this.val().length >=$this.data("maxlength")) {
+                if($this.val().length>$this.data("maxlength")){
+                  $this.val($this.val().substring(0,4));
+                }
+                $this.next(".num").focus();
+              }
+           });
+      });
+  </Script>
+</head>
+<body>
+  <app-root></app-root>
+
+  <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+  <script src="assets/js/vendor/jquery-ui.js"></script>
+  <script src="assets/js/vendor/bootstrap.min.js"></script>
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <script src="assets/js/contact-form.js"></script>
+  <script src="assets/js/ajaxchimp.js"></script>
+  <script src="assets/js/scrollUp.min.js"></script>
+  <script src="assets/js/magnific-popup.min.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+
+</body>
+</html>
